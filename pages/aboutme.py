@@ -15,7 +15,8 @@ layout = dmc.Grid([
             dmc.Col(dmc.Text(bout_me), span=8),
             dmc.Col(dmc.Image(src='/assets/profile_picture_pingu.svg'), span=4),
         ]),
-    ], span=6, offset=3)  # default span=12, finer grid can be created by nesting
+    ], span=6, offset=3, sm=)  # default span=12, finer grid can be created by nesting
+    # (xs, sm, xl...)
 ])
 
 if __name__ == '__main__':
