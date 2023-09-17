@@ -16,10 +16,10 @@ def main():
 
 
 def create_layout():
-    app.layout = html.Div([
+    app.layout = dmc.MantineProvider([
         layout,
         html.Div(page_container, style={'margin-top': '45px'}),
-    ])
+    ], withGlobalStyles=True, theme={'colorScheme': 'dark'}, id='provider_theme')
 
 
 def create_layout_old():
