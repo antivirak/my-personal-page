@@ -1,5 +1,5 @@
-from dash import register_page
 import dash_mantine_components as dmc
+from dash import register_page
 
 register_page(__name__, path='/')
 

@@ -1,5 +1,5 @@
-from dash import Dash, html, callback, Input, Output, State, page_container
 import dash_mantine_components as dmc
+from dash import Dash, html, page_container
 
 from navbar import layout
 
@@ -18,7 +18,7 @@ def main():
 def create_layout():
     app.layout = html.Div([
         layout,
-        html.Div(page_container, style={'margin-top': '200px'}),
+        html.Div(page_container, style={'margin-top': '45px'}),
     ])
 
 
