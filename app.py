@@ -1,9 +1,47 @@
-from dash import Dash
+from dash import Dash, html, callback, Input, Output, State
 import dash_mantine_components as dmc
 
 app = Dash(__name__)
 
-app.layout = dmc.Text("Hello World!")
+def main():
+    create_layout()
+    app.run(debug=True)
+
+def create_layout():
+    app.layout = html.Div([
+        dmc.NumberInput(
+            id='input-1',
+            label="first input",
+            # description="From 0 to infinity, in steps of 5",
+            # value=5,
+            # min=0,
+            # step=5,
+            # style={"width": 250},
+        ),
+        dmc.NumberInput(
+            id='input-2',
+            label='second input',
+        ),
+        dmc.Button(
+            "Click me",  # or children= kwarg
+            id='button',
+        ),
+        dmc.Text(
+            id='output',
+        ),
+    ])
+
+
+@callback(
+    Output('output', 'children'),
+    Input('button', 'n_clicks'),
+    State('input-1', 'value'),
+    State('input-2', 'value'),
+    prevent_initial_call=True,
+)
+def update_output(_, input1, input2):
+    return str(input1 + input2)  # if input1 and input2 else '' - not needed afer prevent_initial_call=True
+
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    main()
