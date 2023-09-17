@@ -1,7 +1,7 @@
 import dash_mantine_components as dmc
+import pandas as pd
 from dash import dcc, html
 from dash_iconify import DashIconify
-import pandas as pd
 
 
 def responzivny_stlpec_uprostred(obsah):
@@ -238,35 +238,33 @@ def stylizuj_graf(fig, theme):
         hovertemplate="%{x}<br>%{y:,.0f} obyvateľov<br>%{customdata[0]:.2%} obyvateľstva",  # Text po priložení myši
     )
 
+    gridcolor = "whitesmoke" if theme == "light" else "#484848"
+    color = "#444" if theme == "light" else "#FFFFFF"
     fig.update_layout(
         height=300,  # Výška grafu v pixeloch
         yaxis_title=None,  # Odstráni popis osy y
         xaxis_title=None,  # Odstráni popis osy x
         dragmode=False,  # Vypne inetrakciu s grafom po kliknutí a ťahaní myšou
         bargap=0.4,  # Medzera medzi stĺpacmi
-        yaxis=dict(
-            gridcolor="whitesmoke"
-            if theme == "light"
-            else "#484848",  # Farba pomocných čiar mriežky
-            gridwidth=0.2,  # Šírka pomocných čiar mriežky
-            zeroline=False,  # Vypne pomocnú čiaru z nuly
-            color="#444"
-            if theme == "light"
-            else "#FFFFFF",  # Farba písma popiskov osy y
-            nticks=5,  # Počet popiskov na ose y
-        ),
+        yaxis={
+            'gridcolor': gridcolor,  # Farba pomocných čiar mriežky
+            'gridwidth': 0.2,  # Šírka pomocných čiar mriežky
+            'zeroline': False,  # Vypne pomocnú čiaru z nuly
+            'color': color,  # Farba písma popiskov osy y
+            'nticks': 5,  # Počet popiskov na ose y
+        },
         paper_bgcolor="rgba(0, 0, 0, 0)",  # Farba pozadia celej komponenty graf
-        font=dict(
-            family="Segoe UI",  # Písmo použité v grafe
-            size=14,  # Veľkosť písma použitá v grafe
-        ),
-        margin=dict(r=0, b=10, t=0, l=0),  # Odsadenie grafu od okrajov
+        font={
+            'family': "Segoe UI",  # Písmo použité v grafe
+            'size': 14,  # Veľkosť písma použitá v grafe
+        },
+        margin={'r': 0, 'b': 10, 't': 0, 'l': 0},  # Odsadenie grafu od okrajov
         plot_bgcolor="rgba(0, 0, 0, 0)",  # Farba pozadia grafu
-        xaxis=dict(
-            showgrid=False,  # Vypne pomocné čiary
-            zeroline=False,  # Vypne pomocnú čiaru z nuly
-            color="#444" if theme == "light" else "#FFFFFF",  # Farba písma na ose x
-        ),
+        xaxis={
+            'showgrid': False,  # Vypne pomocné čiary
+            'zeroline': False,  # Vypne pomocnú čiaru z nuly
+            'color': color,  # Farba písma na ose x
+        },
     )
     return fig
 
