@@ -1,5 +1,5 @@
 import dash_mantine_components as dmc
-from dash import Dash, html, page_container
+from dash import Dash, html, page_container  # , callback, Output, Input, State
 
 from navbar import layout
 
@@ -18,7 +18,7 @@ def main():
 def create_layout():
     app.layout = dmc.MantineProvider([
         layout,
-        html.Div(page_container, style={'margin-top': '45px'}),
+        html.Div(page_container, style={'margin-top': '40px'}),
     ], withGlobalStyles=True, theme={'colorScheme': 'dark'}, id='provider_theme')
 
 

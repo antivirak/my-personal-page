@@ -138,7 +138,7 @@ def navigacny_panel(odkazy, logo):
                                         width=25,
                                     ),
                                     variant="transparent",
-                                    id="tlacidlo-zmena-temy",
+                                    id="change_theme_button",
                                 ),
                             ]
                             + [
